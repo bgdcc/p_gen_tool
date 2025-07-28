@@ -1,0 +1,11 @@
+[project]
+name = "p_gen_tool"
+version = "0.1.0"
+description = "A CLI greeting tool"
+authors = [{ name = "Bogdan Culea" }]
+readme = ""
+requires-python = ">=3.8"
+dependencies = []
+
+[project.scripts]
+pgen = "password_generation.cli:app"
