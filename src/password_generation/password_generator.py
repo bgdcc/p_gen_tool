@@ -10,6 +10,5 @@ def get_password():
 
     print(" ")
     print("You generated the following password:")
-    print(" ")
     print(password)
     print(" ")

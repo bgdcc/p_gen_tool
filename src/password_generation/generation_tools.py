@@ -3,14 +3,18 @@ import secrets
 import sys
 
 def warm_welcome():
+    print(" ")
     print("Welcome to Password Generation Tool! ")
-    print("This is a simple tool for the creation of safe passwords.")
+    print(" ")
 
 def get_length():
+    warm_welcome()
+
     length = ''
 
-    while (not isinstance(length, int)):
+    while (not isinstance(length, int)) or length < 8 or length > 100:
         try:
+            length = ""
             length = int(input("Input a length for your password: "))
 
             if length < 8:
@@ -20,7 +24,18 @@ def get_length():
             
             break
         except ValueError as e:
-            print("Input error.")
+            error_text = ""
+
+            if isinstance(length, int):
+                if length < 8:
+                    error_text = f"The number {length} is smaller than 8."
+                elif length > 100:
+                    error_text = f"The number {length} is bigger than 100."
+            else:
+                error_text = "The input must be a number between 8 and 100."
+
+            print(f"Input error: {error_text}")
+            print(" ")
 
     return length
 
