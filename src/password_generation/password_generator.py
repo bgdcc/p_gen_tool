@@ -2,12 +2,11 @@ import string
 import secrets
 import os
 
+from .generation_tools import get_length, create_password
+
 def get_password():
-    alphabet = string.ascii_letters + string.digits + string.punctuation
+    password_length = get_length()
+    password = create_password(password_length)
 
-    while True:
-        password = ''.join(secrets.choice(alphabet) for i in range(12))
-        if password[0] != '=':
-            break
-
-    return password
+    print("")
+    print("You generated the following password: " + password)
