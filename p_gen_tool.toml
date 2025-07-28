@@ -1,2 +1,2 @@
 [project.scripts]
-get_password = "password_generation.cli:app"
+pgen = "password_generation.cli:app"
