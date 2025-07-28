@@ -15,7 +15,7 @@ def get_length():
     while (not isinstance(length, int)) or length < 8 or length > 100:
         try:
             length = ""
-            length = int(input("Input a length for your password: "))
+            length = int(input("Please input a length for your password: "))
 
             if length < 8:
                 raise ValueError("Length must be equal to or greater than 8.")

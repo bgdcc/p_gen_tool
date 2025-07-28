@@ -8,7 +8,7 @@ def get_password():
     password_length = get_length()
     password = create_password(password_length)
 
-    print(" ")
     print("You generated the following password:")
+    print(" ")
     print(password)
     print(" ")
