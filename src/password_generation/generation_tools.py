@@ -1,6 +1,7 @@
 import string 
 import secrets
 import sys
+import gnupg
 
 def warm_welcome():
     print(" ")
@@ -48,4 +49,3 @@ def create_password(length):
             break
 
     return password
-
