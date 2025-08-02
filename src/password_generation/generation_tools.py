@@ -1,6 +1,7 @@
 import string 
 import secrets
 import sys
+import os
 import gnupg
 import getpass
 import sqlite3
@@ -12,7 +13,6 @@ def warm_welcome():
 
 def get_length():
     warm_welcome()
-
     length = ''
 
     while (not isinstance(length, int)) or length < 8 or length > 100:
@@ -59,7 +59,16 @@ def get_user_data():
             print("The password you entered does not match the first one you entered.")
 
     password_2 = ""
-    insert_in_sql_table(service, user_name, email_address, password_1)
+    encrypted_password = encrypt_password(password_1)
+    insert_in_sql_table(service, user_name, email_address, encrypted_password)
+
+def encrypt_password(password):
+    gpg = gnupg.GPG(gnupg = os.path.expanduser('~/.gnupg'))
+    gpg.encoding = 'utf-8'
+
+    encrypted_password = gpg.encrypt(password, symmetric=True, passphrase='your-password')
+
+    return encrypted_password
 
 def insert_in_sql_table(service, username, email_address, password):
     connection = sqlite3.connect("p_gen_tool.db")
