@@ -4,3 +4,5 @@ myenv/
 
 .build
 build/
+
+p_gen_tool.db

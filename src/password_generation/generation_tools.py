@@ -3,6 +3,7 @@ import secrets
 import sys
 import gnupg
 import getpass
+import sqlite3
 
 def warm_welcome():
     print(" ")
@@ -52,9 +53,24 @@ def get_user_data():
     while password_1 != password_2:
         password_1 = getpass.getpass("Enter the password: ")
         password_2 = getpass.getpass("Enter the password again: ")
+        print("")
+
+        if (password_1 != password_2):
+            print("The password you entered does not match the first one you entered.")
 
     password_2 = ""
+    insert_in_sql_table(service, user_name, email_address, password_1)
 
+def insert_in_sql_table(service, username, email_address, password):
+    connection = sqlite3.connect("p_gen_tool.db")
+    cursor = connection.cursor()
+
+    command_1 = """CREATE TABLE IF NOT EXISTS
+    user_data(Service TEXT PRIMARY KEY, Username TEXT, Email TEXT, Password TEXT)"""
+
+    cursor.execute(command_1)
+
+    cursor.execute(f"INSERT INTO user_data VALUES({service}, {username}, {email_address}, {password})")
 
 def create_password(length):
     alphabet = string.ascii_letters + string.digits + string.punctuation
