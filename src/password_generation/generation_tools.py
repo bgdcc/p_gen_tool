@@ -2,6 +2,7 @@ import string
 import secrets
 import sys
 import gnupg
+import getpass
 
 def warm_welcome():
     print(" ")
@@ -39,6 +40,21 @@ def get_length():
             print(" ")
 
     return length
+
+def get_user_data():
+    service = input("Enter the name of the service: ")
+    user_name = input("Enter the username: ")
+    email_address = input("Enter the email address: ")
+
+    password_1 = "1"
+    password_2 = "2"
+
+    while password_1 != password_2:
+        password_1 = getpass.getpass("Enter the password: ")
+        password_2 = getpass.getpass("Enter the password again: ")
+
+    password_2 = ""
+
 
 def create_password(length):
     alphabet = string.ascii_letters + string.digits + string.punctuation
