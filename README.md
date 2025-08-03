@@ -24,12 +24,20 @@ The program has 3 main modes:
 
    <img width="963" height="776" alt="image" src="https://github.com/user-attachments/assets/b2e83256-620f-43c8-a075-c35898f0f907" />
 
-3. **Password storage** - this mode allows the user to store the login information to a variety of services. The user will be prompted, in order, to provide the name of the service, the username and the password. After the password is encrypted, all the data is stored in a SQLite database. At this stage, the password input is hidden, as to not display it in the terminal. 
+2. **Password storage** - this mode allows the user to store the login information to a variety of services. The user will be prompted, in order, to provide the name of the service, the username and the password. After the password is encrypted, all the data is stored in a SQLite database. At this stage, the password input is hidden, as to not display it in the terminal. 
   
    In this database, the main key is represented by the tuple (Service, Username).
 
    <img width="1127" height="366" alt="image" src="https://github.com/user-attachments/assets/dca76ddd-8aea-46ec-b78e-06063fa9ea28" />
 
-5. **Password retrieval** - this mode allows the user to retrieve password information from the database. At first, the program will ask the user to input the name of the service of which they are interested. Afterwards, if there are multiple entries of the same service, the program will ask the user to choose which one they want to retrieve.
+3. **Password retrieval** - this mode allows the user to retrieve password information from the database. At first, the program will ask the user to input the name of the service of which they are interested. Afterwards, if there are multiple entries of the same service, the program will ask the user to choose which one they want to retrieve.
 
    The program will prompt the user to input the master password. After the input has been validated, the program will copy the decrypted password to the user's clipboard.
+
+## Conclusion
+
+This project provided a huge amount of education value. It helped me gain hands-on experience with various cryptographic practices, such as symmetric encryption and secure hashing.
+
+Furthermore, I was able to design a CLI-based Python application, while using a database engine such as SQLite.
+
+WHile there is still room for improvement, this project gave me practical experience and helped me grow my understanding of key concepts.
