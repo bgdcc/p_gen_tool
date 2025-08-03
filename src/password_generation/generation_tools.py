@@ -63,10 +63,10 @@ def get_user_data():
     insert_in_sql_table(service, user_name, email_address, encrypted_password)
 
 def encrypt_password(password):
-    gpg = gnupg.GPG(gnupg = os.path.expanduser('~/.gnupg'))
+    gpg = gnupg.GPG(gnupghome = os.path.expanduser('~/.gnupg'))
     gpg.encoding = 'utf-8'
 
-    encrypted_password = gpg.encrypt(password, symmetric=True, passphrase='your-password')
+    encrypted_password = gpg.encrypt(password, symmetric=True, recipients = 'alice@gmail.com', passphrase='your-password')
 
     return encrypted_password
 
@@ -75,11 +75,12 @@ def insert_in_sql_table(service, username, email_address, password):
     cursor = connection.cursor()
 
     command_1 = """CREATE TABLE IF NOT EXISTS
-    user_data(Service TEXT PRIMARY KEY, Username TEXT, Email TEXT, Password TEXT)"""
+    user_data(Service TEXT, Username TEXT, Email TEXT, Password TEXT, PRIMARY KEY (Service, Email))"""
 
+    command_2 =  "INSERT INTO user_data (Service, Username, Email, Password) VALUES (?, ?, ?, ?)"
+    
     cursor.execute(command_1)
-
-    cursor.execute(f"INSERT INTO user_data VALUES({service}, {username}, {email_address}, {password})")
+    cursor.execute(command_2, (service, username, email_address, str(password)))
 
 def create_password(length):
     alphabet = string.ascii_letters + string.digits + string.punctuation
