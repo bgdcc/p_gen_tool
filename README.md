@@ -22,15 +22,13 @@ The program has 3 main modes:
 
    If the input happens to not satisfy the mentioned criteria, the program throws an error and continues to ask for input. An example of this usage is shown below.
 
-   <img width="3497" height="2118" alt="image" src="https://github.com/user-attachments/assets/b38fe1e1-f706-49ce-a1b1-5f9e062f4729" />
-
+   <img width="963" height="776" alt="image" src="https://github.com/user-attachments/assets/b2e83256-620f-43c8-a075-c35898f0f907" />
 
 3. **Password storage** - this mode allows the user to store the login information to a variety of services. The user will be prompted, in order, to provide the name of the service, the username and the password. After the password is encrypted, all the data is stored in a SQLite database. At this stage, the password input is hidden, as to not display it in the terminal. 
   
    In this database, the main key is represented by the tuple (Service, Username).
 
-   <img width="3516" height="2109" alt="image" src="https://github.com/user-attachments/assets/847565d1-5fce-453b-a9e9-798a34e4fc68" />
-
+   <img width="1127" height="366" alt="image" src="https://github.com/user-attachments/assets/dca76ddd-8aea-46ec-b78e-06063fa9ea28" />
 
 5. **Password retrieval** - this mode allows the user to retrieve password information from the database. At first, the program will ask the user to input the name of the service of which they are interested. Afterwards, if there are multiple entries of the same service, the program will ask the user to choose which one they want to retrieve.
 
