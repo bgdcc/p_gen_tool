@@ -4,7 +4,7 @@ import os
 from typing_extensions import Annotated
 import typer
 
-from .generation_tools import get_length, create_password, warm_welcome, get_user_data
+from .generation_tools import get_length, create_password, warm_welcome, get_user_data, extract_from_sql_table
 
 def get_password(mode: Annotated[str, typer.Option(help='The mode the user wants to choose')] = ""):
     if mode == "1":
@@ -17,6 +17,8 @@ def get_password(mode: Annotated[str, typer.Option(help='The mode the user wants
         print(" ")
     elif mode == "2":
         get_user_data()
+    elif mode == "3":
+        extract_from_sql_table()
     elif mode == "":
         warm_welcome()
         print("Correct usage: pgen --mode '$@'")

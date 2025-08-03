@@ -55,7 +55,7 @@ def get_user_data():
         print("")
 
         if (password_1 != password_2):
-            print("The password you entered does not match the first one you entered.")
+            print("The password you just entered does not match the first one you entered.")
 
     password_2 = ""
     encrypted_password = encrypt_password(password_1)
@@ -70,8 +70,7 @@ def encrypt_password(password):
     return encrypted_password
 
 def insert_in_sql_table(service, username, password):
-    connection = sqlite3.connect("p_gen_tool.db")
-    cursor = connection.cursor()
+    connection, cursor = establish_sql_connection()
 
     command_1 = """CREATE TABLE IF NOT EXISTS
     user_data(Service TEXT, Username TEXT, Password TEXT, PRIMARY KEY (Service, Username))"""
@@ -79,7 +78,40 @@ def insert_in_sql_table(service, username, password):
     command_2 =  "INSERT INTO user_data (Service, Username, Password) VALUES (?, ?, ?)"
 
     cursor.execute(command_1)
+    connection.commit()
     cursor.execute(command_2, (service, username, str(password)))
+    connection.commit()
+
+    connection.close()
+
+
+def extract_from_sql_table():
+    connection, cursor = establish_sql_connection()
+    results_number = 0
+
+    while results_number == 0:
+        service = input("Enter the name of the service for which you want to receive the password: ")
+
+        cursor.execute("SELECT 1 FROM user_data WHERE Service = ? LIMIT 1", (service,))
+
+        results = cursor.fetchall()
+        results_number = len(results)
+
+        if results_number == 0:
+            print("There does not exist any service with this name within the database. Try again.")
+
+    print(results_number)
+
+    if results_number > 1:
+        print("Which one?")
+
+        cursor.execute("SELECT Service, Username FROM user_data WHERE Service = ?", (service,))
+        results_2 = cursor.fetchall()
+
+        for row in results:
+            print(row)
+
+    connection.close()
 
 def create_password(length):
     alphabet = string.ascii_letters + string.digits + string.punctuation
@@ -90,3 +122,9 @@ def create_password(length):
             break
 
     return password
+
+def establish_sql_connection():
+    connection = sqlite3.connect("p_gen_tool.db")
+    cursor = connection.cursor()
+
+    return connection, cursor
