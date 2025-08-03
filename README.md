@@ -29,6 +29,9 @@ The program has 3 main modes:
   
    In this database, the main key is represented by the tuple (Service, Username).
 
-4. **Password retrieval** - this mode allows the user to retrieve password information from the database. At first, the program will ask the user to input the name of the service of which they are interested. Afterwards, if there are multiple entries of the same service, the program will ask the user to choose which one they want to retrieve.
+   <img width="3516" height="2109" alt="image" src="https://github.com/user-attachments/assets/847565d1-5fce-453b-a9e9-798a34e4fc68" />
+
+
+5. **Password retrieval** - this mode allows the user to retrieve password information from the database. At first, the program will ask the user to input the name of the service of which they are interested. Afterwards, if there are multiple entries of the same service, the program will ask the user to choose which one they want to retrieve.
 
    The program will prompt the user to input the master password. After the input has been validated, the program will copy the decrypted password to the user's clipboard.
