@@ -38,6 +38,6 @@ The program has 3 main modes:
 
 This project provided a huge amount of education value. It helped me gain hands-on experience with various cryptographic practices, such as symmetric encryption and secure hashing.
 
-Furthermore, I was able to design a CLI-based Python application, while using a database engine such as SQLite.
+Furthermore, I was able to apply software design principles when building a Python project, while also learning more about SQL queries through the usage of the database engine SQLite.
 
-WHile there is still room for improvement, this project gave me practical experience and helped me grow my understanding of key concepts.
+WHile there is still room for improvement, this project gave me practical experience and helped me develop my understanding of key concepts.
