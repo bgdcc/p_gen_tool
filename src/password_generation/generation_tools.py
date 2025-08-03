@@ -5,6 +5,7 @@ import os
 import gnupg
 import getpass
 import sqlite3
+from tabulate import tabulate
 
 def warm_welcome():
     print(" ")
@@ -100,16 +101,28 @@ def extract_from_sql_table():
         if results_number == 0:
             print("There does not exist any service with this name within the database. Try again.")
 
-    print(results_number)
 
-    if results_number > 1:
+    cursor.execute("SELECT * FROM user_data WHERE Service = ?", (service,))
+    new_results = len(cursor.fetchall())
+
+    if new_results > 1:
         print("Which one?")
+        print(" ")
 
         cursor.execute("SELECT Service, Username FROM user_data WHERE Service = ?", (service,))
         results_2 = cursor.fetchall()
 
-        for row in results:
-            print(row)
+        query_df = {'Service': [x[0] for x in results_2], 'Username': [x[1] for x in results_2]}
+
+        print(
+            tabulate(
+                query_df,
+                headers = 'keys',
+                floatfmt = ".5f",
+                # showindex = True,
+                tablefmt = "psql",
+            )
+        )
 
     connection.close()
 
