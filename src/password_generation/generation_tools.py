@@ -44,8 +44,7 @@ def get_length():
 
 def get_user_data():
     service = input("Enter the name of the service: ")
-    user_name = input("Enter the username: ")
-    email_address = input("Enter the email address: ")
+    user_name = input("Enter the username/email address: ")
 
     password_1 = "1"
     password_2 = "2"
@@ -60,7 +59,7 @@ def get_user_data():
 
     password_2 = ""
     encrypted_password = encrypt_password(password_1)
-    insert_in_sql_table(service, user_name, email_address, encrypted_password)
+    insert_in_sql_table(service, user_name, encrypted_password)
 
 def encrypt_password(password):
     gpg = gnupg.GPG(gnupghome = os.path.expanduser('~/.gnupg'))
@@ -70,17 +69,17 @@ def encrypt_password(password):
 
     return encrypted_password
 
-def insert_in_sql_table(service, username, email_address, password):
+def insert_in_sql_table(service, username, password):
     connection = sqlite3.connect("p_gen_tool.db")
     cursor = connection.cursor()
 
     command_1 = """CREATE TABLE IF NOT EXISTS
-    user_data(Service TEXT, Username TEXT, Email TEXT, Password TEXT, PRIMARY KEY (Service, Email))"""
+    user_data(Service TEXT, Username TEXT, Password TEXT, PRIMARY KEY (Service, Username))"""
 
-    command_2 =  "INSERT INTO user_data (Service, Username, Email, Password) VALUES (?, ?, ?, ?)"
-    
+    command_2 =  "INSERT INTO user_data (Service, Username, Password) VALUES (?, ?, ?)"
+
     cursor.execute(command_1)
-    cursor.execute(command_2, (service, username, email_address, str(password)))
+    cursor.execute(command_2, (service, username, str(password)))
 
 def create_password(length):
     alphabet = string.ascii_letters + string.digits + string.punctuation
