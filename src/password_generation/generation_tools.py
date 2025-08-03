@@ -5,7 +5,9 @@ import os
 import gnupg
 import getpass
 import sqlite3
+
 from tabulate import tabulate
+from.password_handling import encrypt_password
 
 def warm_welcome():
     print(" ")
@@ -61,14 +63,6 @@ def get_user_data():
     password_2 = ""
     encrypted_password = encrypt_password(password_1)
     insert_in_sql_table(service, user_name, encrypted_password)
-
-def encrypt_password(password):
-    gpg = gnupg.GPG(gnupghome = os.path.expanduser('~/.gnupg'))
-    gpg.encoding = 'utf-8'
-
-    encrypted_password = gpg.encrypt(password, symmetric=True, recipients = 'alice@gmail.com', passphrase='your-password')
-
-    return encrypted_password
 
 def insert_in_sql_table(service, username, password):
     connection, cursor = establish_sql_connection()
