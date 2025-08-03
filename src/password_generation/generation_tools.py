@@ -3,8 +3,9 @@ import secrets
 import sys
 import os
 import gnupg
-import getpass
+from prompt_toolkit import prompt
 import sqlite3
+from django.db import IntegrityError
 
 from tabulate import tabulate
 from.password_handling import encrypt_password
@@ -48,19 +49,8 @@ def get_length():
 def get_user_data():
     service = input("Enter the name of the service: ")
     user_name = input("Enter the username/email address: ")
+    password_1 = prompt("Enter the password: ", is_password = True)
 
-    password_1 = "1"
-    password_2 = "2"
-
-    while password_1 != password_2:
-        password_1 = getpass.getpass("Enter the password: ")
-        password_2 = getpass.getpass("Enter the password again: ")
-        print("")
-
-        if (password_1 != password_2):
-            print("The password you just entered does not match the first one you entered.")
-
-    password_2 = ""
     encrypted_password = encrypt_password(password_1)
     insert_in_sql_table(service, user_name, encrypted_password)
 
