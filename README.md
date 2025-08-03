@@ -26,7 +26,7 @@ The program has 3 main modes:
 
 2. **Password storage** - this mode allows the user to store the login information to a variety of services. The user will be prompted, in order, to provide the name of the service, the username and the password. After the password is encrypted, all the data is stored in a SQLite database. At this stage, the password input is hidden, as to not display it in the terminal. 
   
-   In this database, the main key is represented by the tuple (Service, Username).
+   In this database, the primary key is represented by the combination (Service, Username).
 
    <img width="1127" height="366" alt="image" src="https://github.com/user-attachments/assets/dca76ddd-8aea-46ec-b78e-06063fa9ea28" />
 
