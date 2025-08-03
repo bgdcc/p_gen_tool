@@ -1,6 +1,6 @@
 # Password Management CLI Tool
 
-A command-line password manager using GPG encryption for secure local storage. This is a prototype project done strictly for educational purposes, and should not be used in production. All passwords and/or passwords which may appear in this document are used only for demonstration purposes and have no real usage.
+A command-line password manager using GPG encryption for secure local storage. This is a prototype project done strictly for educational purposes, and should not be used in production. All passwords and/or email addresses which may appear in this document are used only for demonstration purposes and have no real usage.
 
 The program uses a Python backend, in combination with SQLite, meant for storage of login information pertaining to multiple services.
 
