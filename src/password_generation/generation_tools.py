@@ -106,7 +106,7 @@ def extract_from_sql_table():
     new_results = len(cursor.fetchall())
 
     print("The query has found the following results")
-    print(" ")
+    print("")
 
     cursor.execute("SELECT Service, Username FROM user_data WHERE Service = ?", (service,))
     results_2 = cursor.fetchall()
