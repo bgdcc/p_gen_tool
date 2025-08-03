@@ -36,7 +36,7 @@ def get_length():
                 elif length > 100:
                     error_text = f"The number {length} is bigger than 100."
             else:
-                error_text = "The input must be a number between 8 and 100."
+                error_text = "The input must be a number from 8 to 100."
 
             print(f"Input error: {error_text}")
             print(" ")
@@ -105,24 +105,51 @@ def extract_from_sql_table():
     cursor.execute("SELECT * FROM user_data WHERE Service = ?", (service,))
     new_results = len(cursor.fetchall())
 
-    if new_results > 1:
-        print("Which one?")
-        print(" ")
+    print("The query has found the following results")
+    print(" ")
 
-        cursor.execute("SELECT Service, Username FROM user_data WHERE Service = ?", (service,))
-        results_2 = cursor.fetchall()
+    cursor.execute("SELECT Service, Username FROM user_data WHERE Service = ?", (service,))
+    results_2 = cursor.fetchall()
 
-        query_df = {'Service': [x[0] for x in results_2], 'Username': [x[1] for x in results_2]}
+    query_df = {'Service': [x[0] for x in results_2], 'Username': [x[1] for x in results_2]}
 
-        print(
-            tabulate(
-                query_df,
-                headers = 'keys',
-                floatfmt = ".5f",
-                # showindex = True,
-                tablefmt = "psql",
-            )
+    print(
+        tabulate(
+            query_df,
+            headers = 'keys',
+            floatfmt = ".5f",
+            showindex = True,
+            tablefmt = "psql",
         )
+    )
+
+    print("")
+    pw_index = ''
+
+    while (not isinstance(pw_index, int)) or pw_index >= len(results_2) or pw_index < 0:
+        try:
+            pw_index = ""
+            pw_index = int(input("Please select the index of the row denoting correct combination of service and username: "))
+
+            if pw_index < 0:
+                raise ValueError("Provided integer is too small.")
+            if pw_index >= len(results_2):
+                raise ValueError("Provided integer is too large.")
+            
+            break
+        except ValueError as e:
+            error_text = ""
+
+            if isinstance(pw_index, int):
+                if pw_index < 0:
+                    error_text = f"Provided integer is too small."
+                elif pw_index >= len(results_2):
+                    error_text = f"Provided integer is too large."
+            else:
+                error_text = f"The input must be a value from 0 to {len(results_2) - 1}."
+
+            print(f"Input error: {error_text}")
+            print(" ")
 
     connection.close()
 
