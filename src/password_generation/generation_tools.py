@@ -53,6 +53,9 @@ def get_user_data():
 
     encrypted_password = encrypt_password(password_1)
     insert_in_sql_table(service, user_name, encrypted_password)
+    print("")
+    print("Congrats! The login information has been saved to the database.")
+
 
 def insert_in_sql_table(service, username, password):
     connection, cursor = establish_sql_connection()
