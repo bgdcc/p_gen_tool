@@ -4,7 +4,7 @@ A command-line password manager using GPG encryption for secure local storage. T
 
 The program uses a Python backend, in combination with SQLite, utilized for password storage.
 
-## Use-cases
+## Use Cases
 
 The program has 3 main modes:
 
