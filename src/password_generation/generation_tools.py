@@ -105,7 +105,6 @@ def extract_from_sql_table():
             query_df,
             headers = 'keys',
             floatfmt = ".5f",
-            showindex = True,
             tablefmt = "psql",
         )
     )
