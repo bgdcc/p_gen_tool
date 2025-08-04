@@ -1,8 +1,8 @@
 # Password Management CLI Tool
 
-A command-line password manager using GPG encryption for secure local storage. This is a prototype project done strictly for educational purposes, and should not be used in production.
+A command-line password manager using GPG encryption for secure local storage. This is a prototype project done strictly for educational purposes, and should not be used in production. All passwords and/or email addresses which may appear in this document are used only for demonstration purposes and have no real usage.
 
-The program uses a Python backend, in combination with SQLite, utilized for password storage.
+The program uses a Python backend, in combination with SQLite, meant for storage of login information pertaining to multiple services.
 
 ## Usage
 
@@ -26,7 +26,7 @@ The program has 3 main modes:
 
 2. **Password storage** - this mode allows the user to store the login information to a variety of services. The user will be prompted, in order, to provide the name of the service, the username and the password. After the password is encrypted, all the data is stored in a SQLite database. At this stage, the password input is hidden, as to not display it in the terminal. 
   
-   In this database, the main key is represented by the tuple (Service, Username).
+   In this database, the primary key is represented by the combination (Service, Username).
 
    <img width="1127" height="366" alt="image" src="https://github.com/user-attachments/assets/dca76ddd-8aea-46ec-b78e-06063fa9ea28" />
 
@@ -38,6 +38,6 @@ The program has 3 main modes:
 
 This project provided a huge amount of education value. It helped me gain hands-on experience with various cryptographic practices, such as symmetric encryption and secure hashing.
 
-Furthermore, I was able to design a CLI-based Python application, while using a database engine such as SQLite.
+Furthermore, I was able to apply software design principles when building a Python project, while also learning more about SQL queries through the usage of the database engine SQLite.
 
-WHile there is still room for improvement, this project gave me practical experience and helped me grow my understanding of key concepts.
+WHile there is still room for improvement, this project gave me practical experience and helped me develop my understanding of key concepts.
