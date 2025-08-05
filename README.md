@@ -38,14 +38,18 @@ The program has 3 main modes:
 
    <img width="1128" height="655" alt="image" src="https://github.com/user-attachments/assets/809779cd-a3fd-4fae-96bc-2acb6bcb9b17" />
 
-   Now, we will use mode 3.
+   For the sake of demonstration, the passwords chosen for this display are simple (`alicepassword` and `bobpassword`). Now, we will use mode 3.
 
-   
+   <img width="1716" height="876" alt="image" src="https://github.com/user-attachments/assets/9e8b5af6-1a04-4b58-8acd-d789ae5836b3" />
+
+   It should be noted that the program pastes the password directly to the user's clipboard, in order to avoid displaying snsitive information. The master-password is hidden with the `getpass` library, to ensure
 
 ## Conclusion
 
-This project provided a huge amount of education value. It helped me gain hands-on experience with various cryptographic practices, such as symmetric encryption and secure hashing.
+There are lots of aspects of this project which could be improved upon with time. These include:
 
-Furthermore, I was able to apply software design principles when building a Python project, while also learning more about SQL queries through the usage of the database engine SQLite.
+- proper handling of edge-cases
+- other modes for handling specific use-cases (such as editing passwords, deleting accounts etc.)
+- better relation between modes
 
-WHile there is still room for improvement, this project gave me practical experience and helped me develop my understanding of key concepts.
+Regardless, this project was a great opportunity for becoming more familiar with cryptographic concepts, in addition to getting more experience in working with local databases.
