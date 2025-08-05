@@ -39,6 +39,7 @@ The program has 3 main modes:
    <img width="1128" height="655" alt="image" src="https://github.com/user-attachments/assets/809779cd-a3fd-4fae-96bc-2acb6bcb9b17" />
 
    For the sake of demonstration, the passwords chosen for this display are simple (`alicepassword` and `bobpassword`).
+   
    Now, we will use mode 3.
 
    <img width="1716" height="876" alt="image" src="https://github.com/user-attachments/assets/9e8b5af6-1a04-4b58-8acd-d789ae5836b3" />
