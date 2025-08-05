@@ -34,6 +34,8 @@ The program has 3 main modes:
 
    The program will prompt the user to input the master password. After the input has been validated, the program will copy the decrypted password to the user's clipboard.
 
+   To properly demonstrate the capabilities of password retrieval, we will first introduce 2 accounts from the same service using the password storage mode (or mode 2).
+
 ## Conclusion
 
 This project provided a huge amount of education value. It helped me gain hands-on experience with various cryptographic practices, such as symmetric encryption and secure hashing.
