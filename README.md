@@ -44,7 +44,7 @@ The program has 3 main modes:
 
    It should be noted that the program pastes the password directly to the user's clipboard, in order to avoid displaying snsitive information. The master-password is hidden with the `getpass` library, to ensure
 
-## Conclusion
+## Afterthoughts
 
 There are lots of aspects of this project which could be improved upon with time. These include:
 
