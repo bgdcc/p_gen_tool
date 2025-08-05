@@ -7,7 +7,7 @@ from getpass import getpass
 from prompt_toolkit import prompt
 from tabulate import tabulate
 from .password_handling import encrypt_password, decrypt_password
-from .password_hashing import check_password
+from .password_hashing import check_password, hash_string
 
 def warm_welcome():
     print(" ")
@@ -76,18 +76,6 @@ def extract_from_sql_table():
     connection, cursor = establish_sql_connection()
     results_number = 0
 
-    while True:
-        pw_attempt = getpass("Please input the password: ")
-
-        if check_password(pw_attempt):
-            print("")
-            break
-        else:
-            print("")
-            print("Wrong password.")
-            pw_attempt = ""
-
-
     while results_number == 0:
         service = input("Enter the name of the service for which you want to receive the password: ")
 
@@ -101,7 +89,7 @@ def extract_from_sql_table():
 
 
     cursor.execute("SELECT * FROM user_data WHERE Service = ?", (service,))
-    new_results = len(cursor.fetchall())
+    # new_results = len(cursor.fetchall())
 
     print("The query has found the following results")
     print("")
@@ -109,7 +97,7 @@ def extract_from_sql_table():
     cursor.execute("SELECT Service, Username FROM user_data WHERE Service = ?", (service,))
     results_2 = cursor.fetchall()
 
-    query_df = {'Service': [x[0] for x in results_2], 'Username': [x[1] for x in results_2]}
+    query_df = {'Username': [x[1] for x in results_2]}
 
     print(
         tabulate(
@@ -121,7 +109,7 @@ def extract_from_sql_table():
         )
     )
 
-    print("")
+    print()
     pw_index = ''
 
     while (not isinstance(pw_index, int)) or pw_index >= len(results_2) or pw_index < 0:
@@ -150,13 +138,26 @@ def extract_from_sql_table():
             print(" ")
 
     selected_username = query_df['Username'][pw_index]
-    print(selected_username)
+    print()
+    print(f"You selected: {selected_username}")
+    print()
 
     cursor.execute("SELECT Password FROM user_data WHERE Username = ? AND Service = ?", (selected_username, service))
     results_3 = cursor.fetchall()
 
     encrypted_password = results_3[0][0]
-    decrypted_password = decrypt_password(encrypted_password)
+
+    while True:
+        pw_attempt = getpass("Please input the password: ")
+
+        if check_password(pw_attempt):
+            decrypted_password = decrypt_password(encrypted_password, hash_string(pw_attempt))
+            print("")
+            break
+        else:
+            print("")
+            print("Wrong password.")
+            pw_attempt = ""
 
     paste_to_clipboard(decrypted_password)
     print("The password has been pasted to your clipboard!")
