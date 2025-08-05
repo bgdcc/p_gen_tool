@@ -8,7 +8,7 @@ import sqlite3
 from django.db import IntegrityError
 
 from tabulate import tabulate
-from.password_handling import encrypt_password
+from.password_handling import encrypt_password, decrypt_password
 
 def warm_welcome():
     print(" ")
@@ -137,6 +137,16 @@ def extract_from_sql_table():
             print(f"Input error: {error_text}")
             print(" ")
 
+    selected_username = query_df['Username'][pw_index]
+    print(selected_username)
+
+    cursor.execute("SELECT Password FROM user_data WHERE Username = ? AND Service = ?", (selected_username, service))
+    results_3 = cursor.fetchall()
+
+    encrypted_password = results_3[0][0]
+    decrypted_password = decrypt_password(encrypted_password)
+
+    print(decrypted_password)
     connection.close()
 
 def create_password(length):

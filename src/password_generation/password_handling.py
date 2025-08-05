@@ -10,6 +10,6 @@ def encrypt_password(password):
     return encrypted_password
 
 def decrypt_password(password):
-    decrypted_password = gpg.decrypt(password, symmetric = True, recipients = 'alice@gmail.com', passphrase='your-password')
+    decrypted_password = gpg.decrypt(password, passphrase='your-password')
 
     return decrypted_password
