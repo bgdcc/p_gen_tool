@@ -36,6 +36,8 @@ The program has 3 main modes:
 
    To properly demonstrate the capabilities of password retrieval, we will first introduce 2 accounts from the same service using the password storage mode (or mode 2).
 
+   <img width="1100" height="517" alt="image" src="https://github.com/user-attachments/assets/838f0dbb-68ec-4ea6-89a7-3f222df771ef" />
+
 ## Conclusion
 
 This project provided a huge amount of education value. It helped me gain hands-on experience with various cryptographic practices, such as symmetric encryption and secure hashing.
