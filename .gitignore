@@ -6,3 +6,4 @@ myenv/
 build/
 
 p_gen_tool.db
+password_hashing.py

@@ -1,14 +1,13 @@
 import string 
 import secrets
-import sys
-import os
-import gnupg
-from prompt_toolkit import prompt
 import sqlite3
-from django.db import IntegrityError
+import pyperclip
 
+from getpass import getpass
+from prompt_toolkit import prompt
 from tabulate import tabulate
-from.password_handling import encrypt_password, decrypt_password
+from .password_handling import encrypt_password, decrypt_password
+from .password_hashing import check_password
 
 def warm_welcome():
     print(" ")
@@ -77,6 +76,18 @@ def extract_from_sql_table():
     connection, cursor = establish_sql_connection()
     results_number = 0
 
+    while True:
+        pw_attempt = getpass("Please input the password: ")
+
+        if check_password(pw_attempt):
+            print("")
+            break
+        else:
+            print("")
+            print("Wrong password.")
+            pw_attempt = ""
+
+
     while results_number == 0:
         service = input("Enter the name of the service for which you want to receive the password: ")
 
@@ -104,6 +115,7 @@ def extract_from_sql_table():
         tabulate(
             query_df,
             headers = 'keys',
+            showindex=True,
             floatfmt = ".5f",
             tablefmt = "psql",
         )
@@ -146,7 +158,8 @@ def extract_from_sql_table():
     encrypted_password = results_3[0][0]
     decrypted_password = decrypt_password(encrypted_password)
 
-    print(decrypted_password)
+    paste_to_clipboard(decrypted_password)
+    print("The password has been pasted to your clipboard!")
     connection.close()
 
 def create_password(length):
@@ -164,3 +177,6 @@ def establish_sql_connection():
     cursor = connection.cursor()
 
     return connection, cursor
+
+def paste_to_clipboard(text):
+    pyperclip.copy(text)

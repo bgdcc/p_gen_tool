@@ -11,3 +11,4 @@ src/password_generation/cli.py
 src/password_generation/generation_tools.py
 src/password_generation/password_generator.py
 src/password_generation/password_handling.py
+src/password_generation/password_hashing.py
