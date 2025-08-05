@@ -2,7 +2,7 @@ import gnupg
 import os
 import dotenv
 
-dotenv.load_dotenv()
+dotenv.load_dotenv(dotenv_path=os.path.expanduser("~/p_gen_tool/.env"))
 master_password = str(os.getenv("MASTER_PASSWORD"))
 
 gpg = gnupg.GPG(gnupghome = os.path.expanduser('~/.gnupg'))
