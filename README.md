@@ -42,7 +42,7 @@ The program has 3 main modes:
 
    <img width="1716" height="876" alt="image" src="https://github.com/user-attachments/assets/9e8b5af6-1a04-4b58-8acd-d789ae5836b3" />
 
-   It should be noted that the program pastes the password directly to the user's clipboard, in order to avoid displaying snsitive information. The master-password is hidden with the `getpass` library, to ensure
+   It should be noted that the program pastes the password directly to the user's clipboard, in order to avoid displaying snsitive information. The master-password is hidden with the `getpass` library, to ensure security.
 
 ## Afterthoughts
 
