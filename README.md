@@ -10,7 +10,7 @@ After installation, the Password Management Tool can be used from the terminal b
 
 `pgen --mode x`
 
-where `x` is a whole number in the interval [1, 3].
+where `x` is a whole number in the interval `[1, 3]`.
 
 Alternatively, the user can input `pgen` in order to get a guide instructing them about the usage of the command. This aspect has been documented in detail in the following section.
 
