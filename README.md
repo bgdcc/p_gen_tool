@@ -54,4 +54,4 @@ There are lots of aspects of this project which could be improved upon with time
 - other modes for handling specific use-cases (such as editing passwords, deleting accounts etc.)
 - better relation between modes
 
-Regardless, this project was a great opportunity for becoming more familiar with cryptographic concepts, in addition to getting more experience in working with local databases.
+Regardless, this project was a great opportunity to become more familiar with cryptographic concepts, in addition to getting more experience in working with databases.
