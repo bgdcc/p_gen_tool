@@ -45,11 +45,3 @@ The program has 3 main modes:
    <img width="1716" height="876" alt="image" src="https://github.com/user-attachments/assets/9e8b5af6-1a04-4b58-8acd-d789ae5836b3" />
 
    It should be noted that the program pastes the password directly to the user's clipboard, in order to avoid displaying sensitive information. The master-password is hidden with the `getpass` library, to ensure security.
-
-## Afterthoughts
-
-There are lots of aspects of this project which could be improved upon with time, such as:
-
-- proper handling of edge-cases
-- other modes for handling specific use-cases (such as editing passwords, deleting accounts etc.)
-- better relation between modes
